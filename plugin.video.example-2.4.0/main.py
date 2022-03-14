@@ -21,25 +21,24 @@ _handle = int(sys.argv[1])
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
 r =requests.get('http://samgreaves.com:3020/videos/new')
-movies = r.json()
-VIDEOS = {'Movies': movies['movies'],
+VIDEOS = r.json
             # 'TV Shows': [ {'90 Day Fiance': [ {'Season 1' : [ {'name': 'Episode 1 - I Got My Visa!',
             #           'thumb': 'http://image.tmdb.org/t/p/original/zBfWy0JIBCUPBydMiF865oTVpZE.jpg',
             #           'video': 'http://samgreaves.com:3020/videos/tt3472118.mp4',
             #           'genre': 'Reality-TV'} ]}] }],
-            'Sports': [{'name': 'Chicken',
-                      'thumb': 'http://www.vidsplay.com/wp-content/uploads/2017/05/bbq_chicken-screenshot.jpg',
-                      'video': 'http://www.vidsplay.com/wp-content/uploads/2017/05/bbqchicken.mp4',
-                      'genre': 'Food'},
-                     {'name': 'Hamburger',
-                      'thumb': 'http://www.vidsplay.com/wp-content/uploads/2017/05/hamburger-screenshot.jpg',
-                      'video': 'http://www.vidsplay.com/wp-content/uploads/2017/05/hamburger.mp4',
-                      'genre': 'Food'},
-                     {'name': 'Pizza',
-                      'thumb': 'http://www.vidsplay.com/wp-content/uploads/2017/05/pizza-screenshot.jpg',
-                      'video': 'http://www.vidsplay.com/wp-content/uploads/2017/05/pizza.mp4',
-                      'genre': 'Food'}
-                     ]}
+#             'Sports': [{'name': 'Chicken',
+#                       'thumb': 'http://www.vidsplay.com/wp-content/uploads/2017/05/bbq_chicken-screenshot.jpg',
+#                       'video': 'http://www.vidsplay.com/wp-content/uploads/2017/05/bbqchicken.mp4',
+#                       'genre': 'Food'},
+#                      {'name': 'Hamburger',
+#                       'thumb': 'http://www.vidsplay.com/wp-content/uploads/2017/05/hamburger-screenshot.jpg',
+#                       'video': 'http://www.vidsplay.com/wp-content/uploads/2017/05/hamburger.mp4',
+#                       'genre': 'Food'},
+#                      {'name': 'Pizza',
+#                       'thumb': 'http://www.vidsplay.com/wp-content/uploads/2017/05/pizza-screenshot.jpg',
+#                       'video': 'http://www.vidsplay.com/wp-content/uploads/2017/05/pizza.mp4',
+#                       'genre': 'Food'}
+                      ]}
 
 
 def get_url(**kwargs):
