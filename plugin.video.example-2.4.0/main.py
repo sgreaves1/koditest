@@ -20,8 +20,8 @@ _handle = int(sys.argv[1])
 # Here we use a fixed set of properties simply for demonstrating purposes
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
-r =requests.get('http://samgreaves.com:3020/videos/kodi')
-VIDEOS = {'Movies': r.json(),
+r =requests.get('http://samgreaves.com:3020/videos/new')
+VIDEOS = {'Movies': r.json().movies,
             # 'TV Shows': [ {'90 Day Fiance': [ {'Season 1' : [ {'name': 'Episode 1 - I Got My Visa!',
             #           'thumb': 'http://image.tmdb.org/t/p/original/zBfWy0JIBCUPBydMiF865oTVpZE.jpg',
             #           'video': 'http://samgreaves.com:3020/videos/tt3472118.mp4',
@@ -148,23 +148,26 @@ def list_videos(category):
     videos = get_videos(category)
     # Iterate through videos.
     for video in videos:
+        # Setup thumbnail from poster_path
+        image = 'http://image.tmdb.org/t/p/original' + video['poster_path']
+        locat = 'http://samgreaves.com:3020/videos/' + video['imdb_id'] + '.mp4'
         # Create a list item with a text label and a thumbnail image.
-        list_item = xbmcgui.ListItem(label=video['name'])
+        list_item = xbmcgui.ListItem(label=video['title'])
         # Set additional info for the list item.
         # 'mediatype' is needed for skin to display info for this ListItem correctly.
-        list_item.setInfo('video', {'title': video['name'],
-                                    'genre': video['genre'],
+        list_item.setInfo('video', {'title': video['title'],
+                                    'genre': video['extraData']['Genre'],
                                     'mediatype': 'video'})
         # Set graphics (thumbnail, fanart, banner, poster, landscape etc.) for the list item.
         # Here we use the same image for all items for simplicity's sake.
         # In a real-life plugin you need to set each image accordingly.
-        list_item.setArt({'thumb': video['thumb'], 'icon': video['thumb'], 'fanart': video['thumb']})
+        list_item.setArt({'thumb': image, 'icon': image, 'fanart': image})
         # Set 'IsPlayable' property to 'true'.
         # This is mandatory for playable items!
         list_item.setProperty('IsPlayable', 'true')
         # Create a URL for a plugin recursive call.
         # Example: plugin://plugin.video.example/?action=play&video=http://www.vidsplay.com/wp-content/uploads/2017/04/crab.mp4
-        url = get_url(action='play', video=video['video'])
+        url = get_url(action='play', video=locat)
         # Add the list item to a virtual Kodi folder.
         # is_folder = False means that this item won't open any sub-list.
         is_folder = False
