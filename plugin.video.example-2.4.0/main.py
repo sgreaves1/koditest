@@ -21,7 +21,7 @@ _handle = int(sys.argv[1])
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
-VIDEOS = {'Movies': r,
+VIDEOS = {'Movies': r.json(),
             # 'TV Shows': [ {'90 Day Fiance': [ {'Season 1' : [ {'name': 'Episode 1 - I Got My Visa!',
             #           'thumb': 'http://image.tmdb.org/t/p/original/zBfWy0JIBCUPBydMiF865oTVpZE.jpg',
             #           'video': 'http://samgreaves.com:3020/videos/tt3472118.mp4',
