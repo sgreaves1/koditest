@@ -22,10 +22,6 @@ _handle = int(sys.argv[1])
 # from some web-site or online service.
 r =requests.get('http://samgreaves.com:3020/videos/kodi')
 VIDEOS = {'Movies': r.json(),
-            # 'TV Shows': [ {'90 Day Fiance': [ {'Season 1' : [ {'name': 'Episode 1 - I Got My Visa!',
-            #           'thumb': 'http://image.tmdb.org/t/p/original/zBfWy0JIBCUPBydMiF865oTVpZE.jpg',
-            #           'video': 'http://samgreaves.com:3020/videos/tt3472118.mp4',
-            #           'genre': 'Reality-TV'} ]}] }],
             'Sports': [{'name': 'Chicken',
                       'thumb': 'http://www.vidsplay.com/wp-content/uploads/2017/05/bbq_chicken-screenshot.jpg',
                       'video': 'http://www.vidsplay.com/wp-content/uploads/2017/05/bbqchicken.mp4',
@@ -171,7 +167,7 @@ def list_videos(category):
         # Add our item to the Kodi virtual folder listing.
         xbmcplugin.addDirectoryItem(_handle, url, list_item, is_folder)
     # Add a sort method for the virtual folder items (alphabetically, ignore articles)
-    xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
+#     xbmcplugin.addSortMethod(_handle, xbmcplugin.SORT_METHOD_LABEL_IGNORE_THE)
     # Finish creating a virtual folder.
     xbmcplugin.endOfDirectory(_handle)
 
