@@ -10,13 +10,6 @@ provider-name="Roman_V_M">
 <extension point="xbmc.python.pluginsource" library="main.py">
   <provides>video</provides>
 </extension>
-<extension point="xbmc.addon.repository" name="sgreaves1.github.io">
-  <dir>
-    <info compressed="false">https://raw.githubusercontent.com/sgreaves1/sgreaves1.github.io/master/addons.xml</info>
-    <checksum>https://raw.githubusercontent.com/sgreaves1/SamsMovies/master/matrix/zips/addons.xml.md5</checksum>
-    <datadir zip="true">https://raw.githubusercontent.com/sgreaves1/SamsMovies/master/matrix/zips/</datadir>
-  </dir>
-</extension>
 <extension point="xbmc.addon.metadata">
   <summary lang="en">Example Kodi Video Plugin</summary>
   <description lang="en_GB">An example video plugin for Kodi mediacenter.</description>
